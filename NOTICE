@@ -1,0 +1,27 @@
+RDP Wrapper Library and related components
+Copyright (C) Stas'M Corp. and contributors
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+--------------------------------------------------------------------------------
+NOTICE — Third party
+
+- RDP Wrapper (stascorp / sebaxakerhtc forks): Apache-2.0
+- RDPWrapOffsetFinder (llccd): see upstream repository license
+- Microsoft Windows termsrv.dll / debugging symbols: Microsoft copyright;
+  PDBs under tools/OffsetFinder may be cached Microsoft symbols for offline use.
+  Redistribute symbols only in accordance with Microsoft symbol license terms.
+  If unsure, delete the tools/OffsetFinder/*/sym directory before publishing.
+
+This repository's PowerShell automation scripts are provided under the same
+Apache-2.0 terms unless a file states otherwise.

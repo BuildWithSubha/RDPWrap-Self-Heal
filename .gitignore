@@ -1,0 +1,24 @@
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Logs & local backups
+**/logs/
+**/*.log
+**/*.bak
+**/*_LATEST.json
+
+# Large optional local symbol caches beyond repo (keep committed PDBs if desired)
+# tools/OffsetFinder/**/sym/**  # uncomment to exclude PDBs from git
+
+# Temp extracts
+**/rdpwrap_restore/
+**/*.zip
+
+# Secrets / machine dumps
+**/diagnostics/
+**/*secret*
+**/.env
