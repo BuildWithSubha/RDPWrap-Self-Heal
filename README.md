@@ -98,7 +98,7 @@ Verified on **Windows Server 2025** with three concurrent Active RDP sessions af
 > Run `query user` and confirm **3+ Active** sessions — that is the real test.
 
 <p align="center">
-  <img src="docs/images/proof-vs-rdpconf.svg" alt="Diagram comparing misleading green RDPConf status with real proof from query user showing three Active sessions" width="100%">
+  <img src="docs/images/proof-vs-rdpconf.png" alt="Diagram comparing misleading green RDPConf status with real proof from query user showing three Active sessions" width="100%">
 </p>
 
 ---
@@ -117,7 +117,7 @@ If you need Microsoft-supported multi-user Remote Desktop, use the official **Re
 ## Features
 
 <p align="center">
-  <img src="docs/images/features-overview.svg" alt="Feature overview: automatic repair, correct offsets, Server MaxSessions fix, and status diagnostics" width="100%">
+  <img src="docs/images/features-overview.png" alt="Feature overview: automatic repair, correct offsets, Server MaxSessions fix, and status diagnostics" width="100%">
 </p>
 
 <table>
@@ -329,7 +329,7 @@ Get-Content "$env:ProgramFiles\RDP Wrapper\logs\selfheal_$(Get-Date -Format yyyy
 ## Architecture
 
 <p align="center">
-  <img src="docs/images/architecture.svg" alt="Architecture overview from Install.bat through OffsetFinder and rdpwrap.ini to TermService with boot and daily self-heal tasks" width="100%">
+  <img src="docs/images/architecture.png" alt="Architecture overview from Install.bat through OffsetFinder and rdpwrap.ini to TermService with boot and daily self-heal tasks" width="100%">
 </p>
 
 | Layer | Component | Role |
@@ -369,7 +369,7 @@ flowchart TD
 ## How self-heal works
 
 <p align="center">
-  <img src="docs/images/selfheal-flow.svg" alt="Five-step self-heal flow: Windows Update, reboot, boot task, regenerate offsets, multi-session RDP restored" width="100%">
+  <img src="docs/images/selfheal-flow.png" alt="Five-step self-heal flow: Windows Update, reboot, boot task, regenerate offsets, multi-session RDP restored" width="100%">
 </p>
 
 ```mermaid
@@ -439,12 +439,12 @@ RDPWrap-SelfHeal/
 └── docs/
     ├── TROUBLESHOOTING.md            # Extended RDP Wrapper troubleshooting
     ├── PUBLISH.md                    # Maintainer publish + discoverability checklist
-    └── images/                       # README diagrams (SVG + hero banner)
+    └── images/                       # README diagrams (PNG for GitHub; SVG sources kept)
         ├── hero-banner.jpg
-        ├── features-overview.svg
-        ├── proof-vs-rdpconf.svg
-        ├── architecture.svg
-        └── selfheal-flow.svg
+        ├── features-overview.png
+        ├── proof-vs-rdpconf.png
+        ├── architecture.png
+        └── selfheal-flow.png
 ```
 
 
