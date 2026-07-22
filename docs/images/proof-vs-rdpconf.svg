@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="220" viewBox="0 0 960 220" role="img" aria-labelledby="title desc">
+  <title id="title">Problem versus proof for multi-session RDP</title>
+  <desc id="desc">Left: misleading green RDPConf. Right: proof with three Active sessions from query user.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill: #F8FAFC; }
+      .bad { fill: #FFF7ED; stroke: #FDBA74; stroke-width: 1.5; }
+      .good { fill: #ECFDF5; stroke: #6EE7B7; stroke-width: 1.5; }
+      .title { fill: #0F172A; font-family: Segoe UI, system-ui, sans-serif; font-size: 18px; font-weight: 700; }
+      .h { fill: #0F172A; font-family: Segoe UI, system-ui, sans-serif; font-size: 14px; font-weight: 700; }
+      .t { fill: #334155; font-family: Consolas, ui-monospace, monospace; font-size: 12px; }
+      .muted { fill: #64748B; font-family: Segoe UI, system-ui, sans-serif; font-size: 12px; }
+      .vs { fill: #0EA5E9; font-family: Segoe UI, system-ui, sans-serif; font-size: 18px; font-weight: 700; }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #0B1220; }
+        .bad { fill: #2A1510; stroke: #C2410C; }
+        .good { fill: #052E1C; stroke: #059669; }
+        .title, .h { fill: #F8FAFC; }
+        .t { fill: #CBD5E1; }
+        .muted { fill: #94A3B8; }
+        .vs { fill: #38BDF8; }
+      }
+    ]]></style>
+  </defs>
+  <rect class="bg" width="960" height="220" rx="16"/>
+  <text class="title" x="32" y="36">Do not trust green RDPConf alone</text>
+
+  <rect class="bad" x="32" y="56" width="400" height="140" rx="12"/>
+  <text class="h" x="52" y="86">Misleading signal</text>
+  <text class="t" x="52" y="116">RDPConf: [fully supported]</text>
+  <text class="muted" x="52" y="140">Looks healthy...</text>
+  <text class="muted" x="52" y="162">...but 3rd user still gets 30s disconnect</text>
+
+  <text class="vs" x="480" y="130" text-anchor="middle">?</text>
+
+  <rect class="good" x="528" y="56" width="400" height="140" rx="12"/>
+  <text class="h" x="548" y="86">Real proof</text>
+  <text class="t" x="548" y="116">query user ? 3+ Active</text>
+  <text class="muted" x="548" y="140">Administrator  Active</text>
+  <text class="muted" x="548" y="162">test · ankit         Active</text>
+</svg>

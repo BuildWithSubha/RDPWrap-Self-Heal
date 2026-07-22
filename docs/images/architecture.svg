@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-labelledby="title desc">
+  <title id="title">RDPWrap Self-Heal architecture</title>
+  <desc id="desc">Flow from Install.bat through the PowerShell orchestrator into OffsetFinder, community ini, rdpwrap.ini, TermService, and scheduled tasks.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill: #F8FAFC; }
+      .card { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .cardAccent { fill: #0F172A; }
+      .cardSoft { fill: #EFF6FF; stroke: #93C5FD; stroke-width: 1.5; }
+      .cardOk { fill: #ECFDF5; stroke: #6EE7B7; stroke-width: 1.5; }
+      .title { fill: #0F172A; font-family: Segoe UI, system-ui, sans-serif; font-size: 22px; font-weight: 700; }
+      .label { fill: #0F172A; font-family: Segoe UI, system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+      .sub { fill: #475569; font-family: Segoe UI, system-ui, sans-serif; font-size: 11px; }
+      .arrow { stroke: #0EA5E9; stroke-width: 2.5; fill: none; marker-end: url(#m); }
+      .caption { fill: #64748B; font-family: Segoe UI, system-ui, sans-serif; font-size: 12px; }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #0B1220; }
+        .card { fill: #111827; stroke: #334155; }
+        .cardAccent { fill: #1E293B; }
+        .cardSoft { fill: #0C1A2E; stroke: #1D4ED8; }
+        .cardOk { fill: #052E1C; stroke: #059669; }
+        .title, .label { fill: #F8FAFC; }
+        .sub, .caption { fill: #94A3B8; }
+        .arrow { stroke: #38BDF8; }
+      }
+    ]]></style>
+    <marker id="m" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#0EA5E9"/>
+    </marker>
+  </defs>
+  <rect class="bg" width="960" height="420" rx="16"/>
+  <text class="title" x="32" y="42">Architecture overview</text>
+  <text class="caption" x="32" y="64">Entry ? orchestrator ? offsets ? TermService · with boot/daily self-heal</text>
+
+  <!-- Entry -->
+  <rect class="cardSoft" x="40" y="100" width="150" height="70" rx="12"/>
+  <text class="label" x="115" y="130" text-anchor="middle">Install.bat</text>
+  <text class="sub" x="115" y="150" text-anchor="middle">elevated entry</text>
+
+  <path class="arrow" d="M190 135 H230"/>
+
+  <!-- Orchestrator -->
+  <rect class="cardAccent" x="230" y="90" width="190" height="90" rx="12"/>
+  <text class="label" x="325" y="122" text-anchor="middle" fill="#F8FAFC" style="fill:#F8FAFC">Install-RDPWrapSelfHeal.ps1</text>
+  <text class="sub" x="325" y="144" text-anchor="middle" fill="#CBD5E1" style="fill:#CBD5E1">Install · Repair · Status · Uninstall</text>
+  <text class="sub" x="325" y="162" text-anchor="middle" fill="#94A3B8" style="fill:#94A3B8">FileVersionRaw detection</text>
+
+  <path class="arrow" d="M420 135 H460"/>
+
+  <!-- Offset sources -->
+  <rect class="card" x="460" y="70" width="170" height="58" rx="12"/>
+  <text class="label" x="545" y="95" text-anchor="middle">OffsetFinder</text>
+  <text class="sub" x="545" y="113" text-anchor="middle">primary (PDB/symbols)</text>
+
+  <rect class="card" x="460" y="142" width="170" height="58" rx="12"/>
+  <text class="label" x="545" y="167" text-anchor="middle">Community ini</text>
+  <text class="sub" x="545" y="185" text-anchor="middle">fallback download</text>
+
+  <path class="arrow" d="M630 135 H670"/>
+
+  <!-- Apply -->
+  <rect class="cardOk" x="670" y="100" width="160" height="70" rx="12"/>
+  <text class="label" x="750" y="130" text-anchor="middle">rdpwrap.ini</text>
+  <text class="sub" x="750" y="150" text-anchor="middle">+ MaxSessions=0</text>
+
+  <path class="arrow" d="M750 170 V210"/>
+
+  <!-- TermService -->
+  <rect class="card" x="670" y="220" width="160" height="70" rx="12"/>
+  <text class="label" x="750" y="250" text-anchor="middle">TermService</text>
+  <text class="sub" x="750" y="270" text-anchor="middle">rdpwrap.dll hook · :3389</text>
+
+  <!-- Persistence -->
+  <rect class="cardSoft" x="230" y="250" width="190" height="58" rx="12"/>
+  <text class="label" x="325" y="275" text-anchor="middle">Boot + Daily tasks</text>
+  <text class="sub" x="325" y="293" text-anchor="middle">SYSTEM · -Mode Repair</text>
+
+  <path class="arrow" d="M325 250 V180"/>
+  <path class="arrow" d="M420 279 H670"/>
+
+  <!-- Legend -->
+  <text class="caption" x="40" y="380">Optimized for GitHub light &amp; dark themes · cyan = control flow</text>
+</svg>

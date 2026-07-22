@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-labelledby="title desc">
+  <title id="title">RDPWrap Self-Heal feature overview</title>
+  <desc id="desc">Four pillars: automatic repair, correct offsets, Server MaxSessions fix, and diagnostics.</desc>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill: #F8FAFC; }
+      .card { fill: #FFFFFF; stroke: #CBD5E1; stroke-width: 1.5; }
+      .icon { fill: #0EA5E9; }
+      .iconBg { fill: #EFF6FF; }
+      .title { fill: #0F172A; font-family: Segoe UI, system-ui, sans-serif; font-size: 20px; font-weight: 700; }
+      .h { fill: #0F172A; font-family: Segoe UI, system-ui, sans-serif; font-size: 15px; font-weight: 700; }
+      .t { fill: #475569; font-family: Segoe UI, system-ui, sans-serif; font-size: 12px; }
+      .caption { fill: #64748B; font-family: Segoe UI, system-ui, sans-serif; font-size: 12px; }
+      @media (prefers-color-scheme: dark) {
+        .bg { fill: #0B1220; }
+        .card { fill: #111827; stroke: #334155; }
+        .iconBg { fill: #0C1A2E; }
+        .icon { fill: #38BDF8; }
+        .title, .h { fill: #F8FAFC; }
+        .t, .caption { fill: #94A3B8; }
+      }
+    ]]></style>
+  </defs>
+  <rect class="bg" width="960" height="360" rx="16"/>
+  <text class="title" x="32" y="40">What you get</text>
+  <text class="caption" x="32" y="62">Automation, correct offsets, Server policy fixes, and clear diagnostics</text>
+
+  <!-- Card 1 -->
+  <rect class="card" x="32" y="88" width="440" height="110" rx="14"/>
+  <circle class="iconBg" cx="72" cy="143" r="22"/>
+  <path class="icon" d="M64 143 h16 M72 135 v16" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <circle class="icon" cx="72" cy="143" r="10" fill="none" stroke="#0EA5E9" stroke-width="2.5"/>
+  <text class="h" x="110" y="130">Automatic repair</text>
+  <text class="t" x="110" y="152">Boot + daily tasks re-run Repair after Windows Update</text>
+  <text class="t" x="110" y="170">so multi-session RDP recovers without manual hunts</text>
+
+  <!-- Card 2 -->
+  <rect class="card" x="488" y="88" width="440" height="110" rx="14"/>
+  <circle class="iconBg" cx="528" cy="143" r="22"/>
+  <rect class="icon" x="518" y="133" width="20" height="20" rx="3" fill="none" stroke="#0EA5E9" stroke-width="2.5"/>
+  <path d="M522 143 h12 M528 137 v12" stroke="#0EA5E9" stroke-width="2" stroke-linecap="round"/>
+  <text class="h" x="566" y="130">Correct offsets</text>
+  <text class="t" x="566" y="152">FileVersionRaw matching + OffsetFinder, with community</text>
+  <text class="t" x="566" y="170">rdpwrap.ini fallback when symbols are unavailable</text>
+
+  <!-- Card 3 -->
+  <rect class="card" x="32" y="218" width="440" height="110" rx="14"/>
+  <circle class="iconBg" cx="72" cy="273" r="22"/>
+  <text class="icon" x="72" y="278" text-anchor="middle" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="700" fill="#0EA5E9"></text>
+  <text class="h" x="110" y="260">Server MaxSessions fix</text>
+  <text class="t" x="110" y="282">Forces MaxSessions=0 so Windows Server is not stuck</text>
+  <text class="t" x="110" y="300">on the Remote Admin two-session cap</text>
+
+  <!-- Card 4 -->
+  <rect class="card" x="488" y="218" width="440" height="110" rx="14"/>
+  <circle class="iconBg" cx="528" cy="273" r="22"/>
+  <path d="M518 273 h20 M528 263 v20" stroke="#0EA5E9" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="528" cy="273" r="8" fill="none" stroke="#0EA5E9" stroke-width="2"/>
+  <text class="h" x="566" y="260">Status &amp; logs</text>
+  <text class="t" x="566" y="282">One-shot Status mode, ini backups, and daily logs under</text>
+  <text class="t" x="566" y="300">Program Files\RDP Wrapper\logs</text>
+</svg>

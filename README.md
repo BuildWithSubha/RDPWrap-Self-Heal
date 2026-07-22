@@ -8,6 +8,12 @@ Automatically repair **RDP Wrapper** after **Windows Update** — regenerate `te
 
 <br/>
 
+<p>
+  <img src="docs/images/hero-banner.jpg" alt="RDPWrap Self-Heal — self-healing multi-session Remote Desktop for Windows" width="100%">
+</p>
+
+<br/>
+
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Windows%2010%20%7C%2011%20%7C%20Server-0078D6?style=flat-square&logo=windows&logoColor=white)](https://www.microsoft.com/windows)
 [![PowerShell](https://img.shields.io/badge/powershell-5.1+-5391FE?style=flat-square&logo=powershell&logoColor=white)](https://learn.microsoft.com/powershell/)
@@ -91,6 +97,10 @@ Verified on **Windows Server 2025** with three concurrent Active RDP sessions af
 > **Green RDPConf is not proof of working multi-session RDP.**  
 > Run `query user` and confirm **3+ Active** sessions — that is the real test.
 
+<p align="center">
+  <img src="docs/images/proof-vs-rdpconf.svg" alt="Diagram comparing misleading green RDPConf status with real proof from query user showing three Active sessions" width="100%">
+</p>
+
 ---
 
 ## Who this is for
@@ -105,6 +115,10 @@ If you need Microsoft-supported multi-user Remote Desktop, use the official **Re
 ---
 
 ## Features
+
+<p align="center">
+  <img src="docs/images/features-overview.svg" alt="Feature overview: automatic repair, correct offsets, Server MaxSessions fix, and status diagnostics" width="100%">
+</p>
 
 <table>
 <tr>
@@ -314,36 +328,9 @@ Get-Content "$env:ProgramFiles\RDP Wrapper\logs\selfheal_$(Get-Date -Format yyyy
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    subgraph Entry
-        A[Install.bat] --> B[Install-RDPWrapSelfHeal.ps1]
-    end
-
-    subgraph Modes
-        B --> I[Install]
-        B --> R[Repair]
-        B --> S[Status]
-        B --> U[Uninstall]
-    end
-
-    subgraph RepairPipeline["Repair pipeline"]
-        R --> V[FileVersionRaw]
-        V --> F[OffsetFinder]
-        F -->|fallback| C[Community ini]
-        F --> M[Merge rdpwrap.ini]
-        C --> M
-        M --> H[Hook + registry]
-        H --> T[Restart TermService]
-    end
-
-    subgraph Persist["Persistence"]
-        I --> Boot[Boot task]
-        I --> Daily[Daily task]
-        Boot --> R
-        Daily --> R
-    end
-```
+<p align="center">
+  <img src="docs/images/architecture.svg" alt="Architecture overview from Install.bat through OffsetFinder and rdpwrap.ini to TermService with boot and daily self-heal tasks" width="100%">
+</p>
 
 | Layer | Component | Role |
 |-------|-----------|------|
@@ -380,6 +367,10 @@ flowchart TD
 ---
 
 ## How self-heal works
+
+<p align="center">
+  <img src="docs/images/selfheal-flow.svg" alt="Five-step self-heal flow: Windows Update, reboot, boot task, regenerate offsets, multi-session RDP restored" width="100%">
+</p>
 
 ```mermaid
 sequenceDiagram
@@ -447,8 +438,15 @@ RDPWrap-SelfHeal/
 │
 └── docs/
     ├── TROUBLESHOOTING.md            # Extended RDP Wrapper troubleshooting
-    └── PUBLISH.md                    # Maintainer publish + discoverability checklist
+    ├── PUBLISH.md                    # Maintainer publish + discoverability checklist
+    └── images/                       # README diagrams (SVG + hero banner)
+        ├── hero-banner.jpg
+        ├── features-overview.svg
+        ├── proof-vs-rdpconf.svg
+        ├── architecture.svg
+        └── selfheal-flow.svg
 ```
+
 
 ---
 
