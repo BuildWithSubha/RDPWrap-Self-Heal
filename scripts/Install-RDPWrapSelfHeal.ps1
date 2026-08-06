@@ -57,9 +57,11 @@ function Write-Log {
     $line = "[$ts][$Level] $Message"
     $color = switch ($Level) { 'ERROR'{'Red'} 'WARN'{'Yellow'} 'OK'{'Green'} default{'Gray'} }
     Write-Host $line -ForegroundColor $color
-    if (-not (Test-Path $Script:LogDir)) { New-Item -ItemType Directory -Force -Path $Script:LogDir | Out-Null }
-    $log = Join-Path $Script:LogDir ('selfheal_{0}.log' -f (Get-Date -Format 'yyyyMMdd'))
-    Add-Content -LiteralPath $log -Value $line
+    try {
+        if (-not (Test-Path $Script:LogDir)) { New-Item -ItemType Directory -Force -Path $Script:LogDir | Out-Null }
+        $log = Join-Path $Script:LogDir ('selfheal_{0}.log' -f (Get-Date -Format 'yyyyMMdd'))
+        Add-Content -LiteralPath $log -Value $line -ErrorAction SilentlyContinue
+    } catch {}
 }
 
 function Assert-Admin {
@@ -152,7 +154,7 @@ function Test-WrapperLoaded {
 
 function Test-Listener {
     try { return [bool](Get-NetTCPConnection -State Listen -LocalPort 3389 -EA Stop) }
-    catch { return [bool]((netstat -an | Select-String ':3389\s' | Select-String 'LISTENING')) }
+    catch { return [bool]((netstat -an | Select-String ':3389\s+' | Select-String 'LISTENING')) }
 }
 
 function Install-WrapperHook {
@@ -379,7 +381,11 @@ function Show-Status {
     Write-Host "Daily task             : $([bool](Get-ScheduledTask -TaskName $Script:TaskDaily -EA SilentlyContinue))"
     Write-Host ''
     Write-Host 'Active sessions:' -ForegroundColor Cyan
-    query user 2>$null
+    try {
+        & query user 2>$null
+    } catch {
+        Write-Host "  (query.exe not available or failed: $($_.Exception.Message))" -ForegroundColor Gray
+    }
     Write-Host ''
 }
 
