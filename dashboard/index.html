@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RDPWrap Self-Heal Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Top Navigation Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="logo-icon">🛡️</div>
+        <div>
+          <h1>RDPWrap Self-Heal</h1>
+          <span class="sub-title">System Status & Management Center</span>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <div id="overall-badge" class="status-badge loading">
+          <span class="dot"></span>
+          <span id="overall-text">Connecting...</span>
+        </div>
+        <button id="btn-repair" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          Run Self-Heal Repair
+        </button>
+      </div>
+    </header>
+
+    <!-- Metrics Grid -->
+    <main class="main-content">
+      <section class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">⚙️</span>
+            <h3>termsrv.dll Version</h3>
+          </div>
+          <div id="val-termsrv" class="card-value">--</div>
+          <div class="card-meta">
+            <span id="badge-ini" class="tag neutral">ini check: --</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🔌</span>
+            <h3>Listener & Hook</h3>
+          </div>
+          <div class="card-value-group">
+            <div class="status-row">
+              <span>rdpwrap.dll Loaded:</span>
+              <span id="val-loaded" class="badge-sm neutral">--</span>
+            </div>
+            <div class="status-row">
+              <span>Port 3389 Listening:</span>
+              <span id="val-listener" class="badge-sm neutral">--</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">🔑</span>
+            <h3>Policy & SKU</h3>
+          </div>
+          <div class="card-value-group">
+            <div class="status-row">
+              <span>Product Type:</span>
+              <strong id="val-product">--</strong>
+            </div>
+            <div class="status-row">
+              <span>SLPolicy MaxSessions:</span>
+              <span id="val-maxsessions" class="badge-sm neutral">--</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-icon">⏰</span>
+            <h3>Scheduled Auto-Heal</h3>
+          </div>
+          <div class="card-value-group">
+            <div class="status-row">
+              <span>Boot Task (~2m):</span>
+              <span id="val-boottask" class="badge-sm neutral">--</span>
+            </div>
+            <div class="status-row">
+              <span>Daily Task (03:00):</span>
+              <span id="val-dailytask" class="badge-sm neutral">--</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active Sessions Section -->
+      <section class="section-container">
+        <div class="section-header">
+          <h2>Active Remote Desktop Sessions</h2>
+          <span id="session-count" class="badge-count">0 Sessions</span>
+        </div>
+        
+        <div class="table-wrapper">
+          <table class="session-table">
+            <thead>
+              <tr>
+                <th>Session ID</th>
+                <th>User Name</th>
+                <th>Session Type</th>
+                <th>State</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="session-table-body">
+              <tr>
+                <td colspan="5" class="empty-state">Loading active sessions...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Log Terminal Viewer -->
+      <section class="section-container">
+        <div class="section-header">
+          <h2>System Health Logs</h2>
+          <button id="btn-refresh-logs" class="btn btn-secondary btn-sm">Refresh Logs</button>
+        </div>
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">selfheal.log</span>
+          </div>
+          <pre id="log-output" class="terminal-body">Loading log content...</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>RDPWrap Self-Heal v1.0.0 &bull; <a href="https://github.com/BuildWithSubha/RDPWrap-Self-Heal" target="_blank">GitHub Repository</a></span>
+      <span id="last-updated">Last Updated: --</span>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

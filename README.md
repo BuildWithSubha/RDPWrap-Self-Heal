@@ -318,6 +318,19 @@ C:\Program Files\RDP Wrapper\
 & "$env:ProgramFiles\RDP Wrapper\Install-RDPWrapSelfHeal.ps1" -Mode Repair
 ```
 
+### Web Status & Management Dashboard (Zero Install)
+
+You can launch the web-based monitoring dashboard to inspect health metrics, active RDP sessions, and logs in your browser:
+
+1. Right-click **`dashboard\Launch-Dashboard.bat`** → **Run as administrator**.
+2. Open **`http://localhost:8888`** in any browser.
+
+Features:
+- 🟢 **Live Health Indicator**: `termsrv.dll` offset match, listener, and service hook status.
+- 👥 **Active RDP Session Manager**: View connected user accounts and disconnect/logoff sessions with 1-click.
+- ⚡ **1-Click Self-Heal Repair**: Trigger dynamic offset repair directly from the UI.
+- 📜 **Log Terminal Viewer**: Embedded live logs view (`selfheal_YYYYMMDD.log`).
+
 ### Logs
 
 ```powershell
